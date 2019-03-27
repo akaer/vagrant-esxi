@@ -175,8 +175,9 @@ module VagrantPlugins
 
             network_type = network_types[i - 1]
             nic_type = nic_types[i - 1]
+            unitNumber = 7 + i
 
-            cmd = "vim-cmd vmsvc/devices.createnic '[#{config.datastore}] #{config.name}/#{config.name}.vmx' #{nic_type} '#{network_type}'"
+            cmd = "vim-cmd vmsvc/devices.createnic '[#{config.datastore}] #{config.name}/#{config.name}.vmx' #{unitNumber} #{nic_type} '#{network_type}'"
           
             result = Vagrant::Util::Subprocess.execute("ssh", "#{config.user}@#{config.host}", "#{cmd}")
             
